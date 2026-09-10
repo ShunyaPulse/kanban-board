@@ -23,7 +23,7 @@ A modern, production-ready Kanban Board with a state-machine Undo/Redo engine, r
 - **Styling**: Tailwind CSS
 - **State Management**: Zustand
 - **Drag and Drop**: `@dnd-kit/core`, `@dnd-kit/sortable`
-- **Persistence**: SQLite (`better-sqlite3` with WAL mode & foreign keys)
+- **Persistence**: Browser Local Storage (`zustand/middleware` persist)
 - **Validation**: Zod
 - **Testing**: Vitest (45 unit & integration tests)
 
