@@ -6,6 +6,7 @@ import MetricsPanel from "@/components/MetricsPanel";
 import CardModal from "@/components/CardModal";
 import UndoRedoControls from "@/components/UndoRedoControls";
 import ImportExport from "@/components/ImportExport";
+import InstallPwaButton from "@/components/InstallPwaButton";
 import { useBoardStore } from "@/store/board-store";
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
           <UndoRedoControls />
         </div>
         <div className="flex items-center space-x-2 sm:space-x-4 w-full sm:w-auto justify-between sm:justify-end overflow-x-auto pb-1 sm:pb-0">
+          <InstallPwaButton />
           <button
             onClick={toggleMetrics}
             className="px-4 py-2 text-sm font-semibold text-slate-200 bg-slate-800/80 border border-slate-700/60 rounded-xl hover:bg-slate-700 transition-all shadow-sm backdrop-blur-sm"
