@@ -1,0 +1,34 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Deep modern dark background with rounded corners -->
+  <rect width="512" height="512" rx="112" fill="#0f172a"/>
+  
+  <!-- Subtle gradient glow -->
+  <defs>
+    <linearGradient id="glow" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1e293b" stop-opacity="0.8"/>
+      <stop offset="1" stop-color="#020617" stop-opacity="0.9"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#glow)"/>
+
+  <!-- Column 1 (To Do) -->
+  <rect x="96" y="112" width="88" height="288" rx="24" fill="#1e293b"/>
+  <!-- Card 1 -->
+  <rect x="112" y="136" width="56" height="64" rx="12" fill="#3b82f6"/>
+  <!-- Card 2 -->
+  <rect x="112" y="216" width="56" height="96" rx="12" fill="#3b82f6" fill-opacity="0.4"/>
+
+  <!-- Column 2 (In Progress) -->
+  <rect x="212" y="112" width="88" height="288" rx="24" fill="#1e293b"/>
+  <!-- Card 3 (Elevated, active) -->
+  <rect x="228" y="152" width="56" height="120" rx="12" fill="#10b981"/>
+  <!-- Card drop shadow for the active card -->
+  <rect x="228" y="152" width="56" height="120" rx="12" fill="white" fill-opacity="0.1"/>
+
+  <!-- Column 3 (Done) -->
+  <rect x="328" y="112" width="88" height="288" rx="24" fill="#1e293b"/>
+  <!-- Card 4 -->
+  <rect x="344" y="136" width="56" height="80" rx="12" fill="#8b5cf6"/>
+  <!-- Card 5 -->
+  <rect x="344" y="232" width="56" height="56" rx="12" fill="#8b5cf6" fill-opacity="0.4"/>
+</svg>
