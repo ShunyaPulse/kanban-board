@@ -6,7 +6,7 @@ import {
   DragOverlay,
   closestCorners,
   KeyboardSensor,
-  PointerSensor,
+  MouseSensor,
   TouchSensor,
   useSensor,
   useSensors,
@@ -75,7 +75,7 @@ export default function Board() {
   }, [undo, redo]);
 
   const sensors = useSensors(
-    useSensor(PointerSensor, { activationConstraint: { distance: 8 } }),
+    useSensor(MouseSensor, { activationConstraint: { distance: 8 } }),
     useSensor(TouchSensor, {
       activationConstraint: {
         delay: 250,
