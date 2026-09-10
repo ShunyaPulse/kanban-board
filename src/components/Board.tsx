@@ -32,10 +32,13 @@ export default function Board() {
 
   const [activeCard, setActiveCard] = useState<CardWithSubtasks | null>(null);
 
+  const [hasHydrated, setHasHydrated] = useState(false);
+
   useEffect(() => {
+    useBoardStore.persist.rehydrate();
+    setHasHydrated(true);
     fetchBoard();
-    fetchHistory();
-  }, [fetchBoard, fetchHistory]);
+  }, [fetchBoard]);
 
   // Auto-dismiss errors
   useEffect(() => {
@@ -135,7 +138,7 @@ export default function Board() {
     }),
   };
 
-  if (isLoading && columns.length === 0) {
+  if (!hasHydrated || (isLoading && columns.length === 0)) {
     return (
       <div className="flex-1 flex items-center justify-center bg-transparent">
         <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
