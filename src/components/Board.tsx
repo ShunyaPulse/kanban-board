@@ -147,7 +147,7 @@ export default function Board() {
   }
 
   return (
-    <div className="flex-1 overflow-x-auto p-6 bg-transparent flex flex-col h-full">
+    <div className="flex-1 overflow-x-auto p-4 sm:p-6 bg-transparent flex flex-col h-full">
       {error && (
         <div className="fixed top-20 right-4 bg-red-900/40 backdrop-blur-sm border border-red-500/50 text-red-200 px-4 py-3 rounded-xl z-50 shadow-lg font-medium text-sm">
           {error}
@@ -160,7 +160,7 @@ export default function Board() {
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
       >
-        <div className="flex gap-6 h-full items-start pb-4">
+        <div className="flex gap-4 sm:gap-6 h-full items-start pb-4">
           {columns.map((column) => (
             <Column key={column.id} column={column} />
           ))}

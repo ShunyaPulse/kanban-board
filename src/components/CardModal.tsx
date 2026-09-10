@@ -101,7 +101,7 @@ export default function CardModal() {
             <span className="text-sm font-semibold text-slate-400 uppercase tracking-wider">
               Priority
             </span>
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-2">
               {priorities.map((p) => (
                 <button
                   key={p}

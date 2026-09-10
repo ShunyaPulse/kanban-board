@@ -22,7 +22,7 @@ export default function Column({ column }: ColumnProps) {
   const isOverLimit = column.wipLimit !== undefined && column.wipLimit > 0 && cards.length >= column.wipLimit;
 
   return (
-    <div className={`flex flex-col glass-column rounded-2xl w-80 shrink-0 max-h-full ${isOverLimit ? 'ring-2 ring-red-500/80 bg-red-900/20' : ''}`}>
+    <div className={`flex flex-col glass-column rounded-2xl w-[85vw] sm:w-80 shrink-0 max-h-full ${isOverLimit ? 'ring-2 ring-red-500/80 bg-red-900/20' : ''}`}>
       <div className="p-4 border-b border-slate-700/50 flex justify-between items-center rounded-t-2xl z-10 shrink-0">
         <h3 className="font-semibold text-slate-200 flex items-center text-sm tracking-tight">
           {column.title}

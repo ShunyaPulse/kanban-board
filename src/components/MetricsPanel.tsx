@@ -38,7 +38,7 @@ export default function MetricsPanel() {
         className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-40 transition-opacity"
         onClick={toggleMetrics}
       />
-      <div className="fixed top-0 right-0 h-full w-96 bg-slate-800/95 backdrop-blur-xl shadow-2xl z-50 flex flex-col border-l border-slate-700/60 transition-transform">
+      <div className="fixed top-0 right-0 h-full w-[85vw] sm:w-96 bg-slate-800/95 backdrop-blur-xl shadow-2xl z-50 flex flex-col border-l border-slate-700/60 transition-transform">
         <div className="p-5 border-b border-slate-700/50 flex justify-between items-center bg-slate-800/50">
           <h2 className="text-xl font-bold text-slate-100 tracking-tight">
             Board Metrics
