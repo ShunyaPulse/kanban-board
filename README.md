@@ -57,15 +57,3 @@ npm test
 npm run build
 npm start
 ```
-
-## 🌐 Deployment on Vercel
-
-1. Push this repository to your GitHub account:
-   ```bash
-   git remote add origin https://github.com/<your-username>/<repo-name>.git
-   git branch -M main
-   git push -u origin main
-   ```
-2. Go to [Vercel](https://vercel.com) and click **"Add New"** → **"Project"**.
-3. Import your GitHub repository.
-4. Click **Deploy**.
