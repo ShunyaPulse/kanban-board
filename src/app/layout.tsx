@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Link from "next/link";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: {
@@ -73,6 +74,18 @@ export default function RootLayout({
             </nav>
           </div>
         </footer>
+
+        {/* Adsterra Social Bar */}
+        <Script 
+          src="https://pl31276438.profitableratecpmnetwork.com/07/86/2e/07862e2f4fe218fd5671878c37c8f497.js" 
+          strategy="afterInteractive" 
+        />
+        
+        {/* Adsterra Pop Under */}
+        <Script 
+          src="https://pl31276439.profitableratecpmnetwork.com/60/bd/b3/60bdb3aeceb20590582c5794fdbd1704.js" 
+          strategy="afterInteractive" 
+        />
       </body>
     </html>
   );
