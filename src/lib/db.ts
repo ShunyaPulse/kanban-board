@@ -74,10 +74,10 @@ function initDb(): Database.Database {
     const insertColumn = instance.prepare('INSERT INTO columns (id, title, position, wip_limit) VALUES (@id, @title, @position, @wipLimit)');
     
     const defaultColumns = [
-      { id: uuidv4(), title: 'To Do', position: 0, wipLimit: 0 },
-      { id: uuidv4(), title: 'In Progress', position: 1, wipLimit: 3 },
-      { id: uuidv4(), title: 'Review', position: 2, wipLimit: 2 },
-      { id: uuidv4(), title: 'Done', position: 3, wipLimit: 0 },
+      { id: 'col-todo', title: 'To Do', position: 0, wipLimit: 0 },
+      { id: 'col-in-progress', title: 'In Progress', position: 1, wipLimit: 3 },
+      { id: 'col-review', title: 'Review', position: 2, wipLimit: 2 },
+      { id: 'col-done', title: 'Done', position: 3, wipLimit: 0 },
     ];
 
     const seedTx = instance.transaction((columns) => {
