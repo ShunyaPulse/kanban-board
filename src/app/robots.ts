@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://kanban-board-sigma-ochre.vercel.app/sitemap.xml',
+    sitemap: 'https://ohno-kanban.vercel.app/sitemap.xml',
   }
 }

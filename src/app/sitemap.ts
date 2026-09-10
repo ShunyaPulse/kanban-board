@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://kanban-board-sigma-ochre.vercel.app'
+  const baseUrl = 'https://ohno-kanban.vercel.app'
 
   return [
     {
