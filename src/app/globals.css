@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-slate-950 text-slate-100 antialiased font-sans;
+    background-image: linear-gradient(to bottom right, #0f172a, #020617);
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  .card-shadow {
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.2), 0 0 3px rgba(0,0,0,0.1);
+  }
+  .card-shadow-hover {
+    box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3), 0 0 5px rgba(0,0,0,0.2);
+  }
+  .glass-header {
+    @apply bg-slate-900/70 backdrop-blur-md border-b border-slate-700/50 shadow-[0_4px_30px_rgba(0,0,0,0.1)];
+  }
+  .glass-column {
+    @apply bg-slate-800/60 backdrop-blur-sm border border-slate-700/60 shadow-sm;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* DnD drag overlay */
+.drag-overlay {
+  opacity: 0.9;
+  transform: rotate(3deg);
+  cursor: grabbing;
+}
