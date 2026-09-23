@@ -2,7 +2,7 @@
 
 A modern, production-ready Kanban Board with a state-machine Undo/Redo engine, real-time lead time & throughput analytics, custom WIP limits, and JSON schema-validated export/import.
 
-![Kanban Board](https://raw.githubusercontent.com/ShunyaPulse/kanban-board/main/public/preview.png)
+![Kanban Board](public/preview.png)
 
 ## 🚀 Features
 
