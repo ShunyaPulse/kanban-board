@@ -50,8 +50,17 @@ export default function CardComponent({ card, columnId }: CardProps) {
       style={style}
       {...attributes}
       {...listeners}
+      role="button"
+      tabIndex={0}
+      aria-label={`Card: ${card.title} (${card.priority} priority)`}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          setSelectedCard(card);
+        }
+      }}
       onClick={() => setSelectedCard(card)}
-      className={`relative bg-slate-800/90 backdrop-blur-sm rounded-xl border border-slate-700/80 p-4 cursor-grab hover:-translate-y-0.5 transition-all duration-200 flex flex-col group select-none ${
+      className={`relative bg-slate-800/90 backdrop-blur-sm rounded-xl border border-slate-700/80 p-4 cursor-grab hover:-translate-y-0.5 transition-all duration-200 flex flex-col group select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500/70 ${
         isDragging ? "shadow-2xl border-blue-500/50 rotate-2 scale-105" : "card-shadow hover:card-shadow-hover"
       }`}
     >

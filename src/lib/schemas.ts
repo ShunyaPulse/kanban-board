@@ -35,9 +35,12 @@ export const ColumnSchema = z.object({
   wipLimit: z.number().int().min(0),
 });
 
-export const BoardDataSchema = z.object({
-  columns: z.array(ColumnSchema),
+export const ColumnWithCardsSchema = ColumnSchema.extend({
   cards: z.array(CardWithSubtasksSchema),
+});
+
+export const BoardDataSchema = z.object({
+  columns: z.array(ColumnWithCardsSchema),
   exportedAt: z.string(),
   version: z.string(),
 });

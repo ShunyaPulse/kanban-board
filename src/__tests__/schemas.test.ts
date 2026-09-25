@@ -141,31 +141,36 @@ describe("Schema Validation", () => {
   });
 
   describe("BoardDataSchema", () => {
-    it("should accept valid board export data", () => {
+    const validCard = {
+      id: "card-1",
+      title: "Test Card",
+      description: "Desc",
+      priority: "medium",
+      columnId: "col-1",
+      position: 0,
+      createdAt: "2024-01-01T00:00:00.000Z",
+      movedAt: "2024-01-01T00:00:00.000Z",
+      completedAt: null,
+      subtasks: [
+        {
+          id: "st-1",
+          title: "Subtask 1",
+          completed: false,
+          cardId: "card-1",
+          position: 0,
+        },
+      ],
+    };
+
+    it("should accept valid board export data (cards embedded in columns)", () => {
       const data = {
         columns: [
-          { id: "col-1", title: "To Do", position: 0, wipLimit: 0 },
-        ],
-        cards: [
           {
-            id: "card-1",
-            title: "Test Card",
-            description: "Desc",
-            priority: "medium",
-            columnId: "col-1",
+            id: "col-1",
+            title: "To Do",
             position: 0,
-            createdAt: "2024-01-01T00:00:00.000Z",
-            movedAt: "2024-01-01T00:00:00.000Z",
-            completedAt: null,
-            subtasks: [
-              {
-                id: "st-1",
-                title: "Subtask 1",
-                completed: false,
-                cardId: "card-1",
-                position: 0,
-              },
-            ],
+            wipLimit: 0,
+            cards: [validCard],
           },
         ],
         exportedAt: "2024-01-01T00:00:00.000Z",
@@ -174,14 +179,28 @@ describe("Schema Validation", () => {
 
       const result = BoardDataSchema.parse(data);
       expect(result.columns).toHaveLength(1);
-      expect(result.cards).toHaveLength(1);
-      expect(result.cards[0].subtasks).toHaveLength(1);
+      expect(result.columns[0].cards).toHaveLength(1);
+      expect(result.columns[0].cards[0].subtasks).toHaveLength(1);
+    });
+
+    it("should accept legacy board export format (separate cards array)", () => {
+      // Boards exported by older versions kept cards in a top-level array.
+      const data = {
+        columns: [
+          { id: "col-1", title: "To Do", position: 0, wipLimit: 0, cards: [] },
+        ],
+        cards: [validCard],
+        exportedAt: "2024-01-01T00:00:00.000Z",
+        version: "1.0.0",
+      };
+
+      const result = BoardDataSchema.parse(data);
+      expect(result.columns).toHaveLength(1);
     });
 
     it("should reject board data without version", () => {
       const data = {
         columns: [],
-        cards: [],
         exportedAt: "2024-01-01T00:00:00.000Z",
       };
       expect(() => BoardDataSchema.parse(data)).toThrow();
@@ -189,8 +208,15 @@ describe("Schema Validation", () => {
 
     it("should reject board data with invalid card", () => {
       const data = {
-        columns: [],
-        cards: [{ id: "card-1" }], // Missing required fields
+        columns: [
+          {
+            id: "col-1",
+            title: "To Do",
+            position: 0,
+            wipLimit: 0,
+            cards: [{ id: "card-1" }], // Missing required fields
+          },
+        ],
         exportedAt: "2024-01-01T00:00:00.000Z",
         version: "1.0.0",
       };

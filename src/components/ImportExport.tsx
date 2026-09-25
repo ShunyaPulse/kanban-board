@@ -50,7 +50,7 @@ export default function ImportExport() {
     reader.onload = async (event) => {
       try {
         const json = event.target?.result as string;
-        const parsed = JSON.parse(json);
+        const parsed: unknown = JSON.parse(json);
         const success = await importBoard(parsed);
         if (success) {
           setStatus({
@@ -106,10 +106,10 @@ export default function ImportExport() {
 
       {status && (
         <div
-          className={`absolute top-full mt-2 right-0 px-3 py-1.5 rounded shadow text-xs font-bold whitespace-nowrap z-20 ${
+          className={`absolute top-full mt-2 right-0 px-3 py-1.5 rounded-lg shadow-lg text-xs font-bold whitespace-nowrap z-20 backdrop-blur-sm ${
             status.type === "error"
-              ? "bg-red-100 text-red-800 border border-red-200"
-              : "bg-green-100 text-green-800 border border-green-200"
+              ? "bg-red-900/90 text-red-200 border border-red-500/50"
+              : "bg-green-900/90 text-green-200 border border-green-500/50"
           }`}
         >
           {status.message}

@@ -8,9 +8,9 @@ import type {
   CardWithSubtasks,
   Subtask,
   Metrics,
-  HistoryEntry,
   Priority,
 } from "@/lib/types";
+import { BoardDataSchema } from "@/lib/schemas";
 
 interface BoardState {
   columns: ColumnWithCards[];
@@ -368,12 +368,33 @@ export const useBoardStore = create<BoardState>()(
         return JSON.stringify(data, null, 2);
       },
 
-      importBoard: async (data: any) => {
+      importBoard: async (data: unknown) => {
         try {
-          if (!data || !data.columns || !Array.isArray(data.columns)) throw new Error("Invalid data");
-          get()._saveHistory(data.columns);
+          const result = BoardDataSchema.safeParse(data);
+          if (!result.success) {
+            set({ error: "Import failed: data does not match the expected board format" });
+            return false;
+          }
+          let imported = result.data.columns.map((col) => ({
+            ...col,
+            cards: col.cards.map((card, i) => ({ ...card, position: i })),
+          }));
+
+          // Legacy exports (v0.x) kept cards in a separate top-level array.
+          const legacyCards = (data as { cards?: CardWithSubtasks[] })?.cards;
+          if (Array.isArray(legacyCards) && legacyCards.length > 0) {
+            imported = imported.map((col) => ({
+              ...col,
+              cards: legacyCards
+                .filter((c) => c.columnId === col.id)
+                .sort((a, b) => a.position - b.position)
+                .map((card, i) => ({ ...card, position: i })),
+            }));
+          }
+
+          get()._saveHistory(imported);
           return true;
-        } catch (e) {
+        } catch {
           set({ error: "Failed to import board" });
           return false;
         }
@@ -384,6 +405,7 @@ export const useBoardStore = create<BoardState>()(
     {
       name: "kanban-storage",
       skipHydration: true, // We will manually hydrate to avoid mismatch
+      partialize: (state) => ({ columns: state.columns }),
     }
   )
 );

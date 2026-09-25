@@ -114,13 +114,11 @@ export default function CardModal() {
                   style={{
                     backgroundColor: `${priorityColors[p]}20`,
                     color: priorityColors[p],
-                    borderColor:
+                    borderColor: priorityColors[p],
+                    boxShadow:
                       card.priority === p
-                        ? priorityColors[p]
-                        : "transparent",
-                    ...(card.priority === p
-                      ? { ringColor: priorityColors[p] }
-                      : {}),
+                        ? `0 0 0 2px ${priorityColors[p]}, 0 0 0 4px #0f172a`
+                        : undefined,
                   }}
                 >
                   {p.charAt(0).toUpperCase() + p.slice(1)}
