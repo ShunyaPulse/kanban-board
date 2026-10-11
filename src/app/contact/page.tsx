@@ -48,7 +48,7 @@ export default function Contact() {
               <p className="text-sm text-slate-400">Kanban Board is open source. Fork the repo, make improvements, and submit a pull request.</p>
             </a>
             <a
-              href="mailto:techanics6174@gmail.com"
+              href="mailto:shunyapulse42@gmail.com"
               className="bg-slate-800/60 border border-slate-700/60 rounded-xl p-6 hover:border-amber-500/50 transition-all group no-underline"
             >
               <h3 className="font-semibold text-slate-100 mb-2 group-hover:text-amber-400 transition-colors">📧 Email</h3>
